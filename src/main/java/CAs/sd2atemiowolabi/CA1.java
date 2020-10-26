@@ -54,6 +54,9 @@ public class CA1
            codes = new int[8];
            grades = new int[8];
            int[] top5 = new int[5];
+           int[] codes2 = new int[5];
+           int total = 0;
+
            try {
                Scanner sc = new Scanner(new File(file));
                sc.useDelimiter("[,\r\n]+");
@@ -65,12 +68,24 @@ public class CA1
                    {
                        codes[i] = sc.nextInt();
                        grades[i] = sc.nextInt();
-                       Arrays.sort(grades);
-                       top5 = Arrays.copyOfRange(grades, grades.length-5,grades.length);
+//                       Arrays.sort(grades);
+//                       top5 = Arrays.copyOfRange(grades, grades.length-5,grades.length);
+//                       codes2 = Arrays.copyOfRange(codes, codes.length-5,codes.length);
                    }
 
+
+                   for(int a = 0; a < grades.length; a++)
+                   {
+                       total = total + grades[a];
+                   }
+
+                   double average = total / grades.length;
+
                    System.out.println("Student ID: " + student_Number);
-                   System.out.println("CODES" + Arrays.toString(codes) + "\nGrades" + Arrays.toString(top5) + "\n");
+                   System.out.println("CODES" + Arrays.toString(codes) + "\nGrades" + Arrays.toString(grades) + "\n" + "Average Grade:" + average + "\n");
+
+                   //System.out.println("CODES" + Arrays.toString(codes2) + "\nGrades" + Arrays.toString(top5) + "\n");
+
                }
 
             sc.close();
@@ -81,6 +96,7 @@ public class CA1
 
 
        }
+
 
 
 
