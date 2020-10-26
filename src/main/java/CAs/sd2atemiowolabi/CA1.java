@@ -59,15 +59,22 @@ public class CA1
                    String student_Number = sc.next();
                    for(int i = 0; i < 8;i++)
                    {
+
                        codes[i] = sc.nextInt();
                        grades[i] = sc.nextInt();
+
+                         //Arrays.sort(codes);
 //                       Arrays.sort(grades);
 //                       top5 = Arrays.copyOfRange(grades, grades.length-5,grades.length);
-//                       codes2 = Arrays.copyOfRange(codes, codes.length-5,codes.length);
+                        // codes2 = Arrays.copyOfRange(codes, codes.length-5,codes.length);
                    }
+                   Arrays.sort(grades);
+                   top5 = Arrays.copyOfRange(grades, grades.length-5,grades.length);
+                   //codes2 = Arrays.copyOfRange(codes, codes.length-5,codes.length);
+                   Arrays.copyOfRange(codes, 0, 5);
 
                    System.out.println("Student ID: " + student_Number);
-                   System.out.println("CODES" + Arrays.toString(codes) + "\nGrades" + Arrays.toString(grades) + "\n");
+                   System.out.println("CODES" + Arrays.toString(Arrays.copyOfRange(codes, 0, 5)) + "\nGrades" + Arrays.toString(top5) + "\n");
 
                    //System.out.println("CODES" + Arrays.toString(codes2) + "\nGrades" + Arrays.toString(top5) + "\n");
 
