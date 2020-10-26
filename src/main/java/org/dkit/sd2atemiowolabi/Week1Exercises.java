@@ -10,15 +10,15 @@ public class Week1Exercises
         Week1Exercises app = new Week1Exercises();
         app.start();
 
-        Scanner input = new Scanner(System.in);
-
-        int[] myArray = new int[10];
-        getArrayValuesFromUser(input, myArray);
-        System.out.println(Arrays.toString(myArray));
-        System.out.println(sumWithoutSmallest2(myArray));
-
-        alternatingValue(input, myArray);
-        System.out.println(Arrays.toString(myArray));
+//        Scanner input = new Scanner(System.in);
+//
+//        int[] myArray = new int[10];
+//        getArrayValuesFromUser(input, myArray);
+//        System.out.println(Arrays.toString(myArray));
+//        System.out.println(sumWithoutSmallest2(myArray));
+//
+//        alternatingValue(input, myArray);
+//        System.out.println(Arrays.toString(myArray));
 
     }
 

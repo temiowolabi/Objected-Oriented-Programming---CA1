@@ -11,161 +11,77 @@ public class CA1
      * */
 
 
+    //TODO
+    /**
+     * Pass arrays through methods.
+     * Get Top 5.
+     * Get Average.
+     * Test.
+     * Git.
+     *
+     * Note To Self:
+     * It's hard but keep at it :( Don't stress yourself too much :(
+     */
+
+
     public static void main(String[] args) {
-//        int[] codes = new int[7];
-//        int[] grades = new int[7];
-       // int[] array = new int[16];
-//        ArrayList<Student1> students = new ArrayList<>();
-        //selectFiveGrades(codes,grades);
-        readCSV("JC_Results.txt");
-//       readStudentsFromFile(students);
-//        System.out.println(Arrays.toString(students.toArray()));
-       //printElementsAtEvenIndex(students);
+             CA1 app = new CA1();
+             app.start();
+//              readCSV("JC_Results.csv");
+//        int [] studentCodes;
+//        int [] studentGrades;
+//        selectFiveGrades(studentCodes, studentGrades);
 //
-
-
-       // readCSV("JC_Results.csv");
-
-
     }
-    
+
+    public void start()
+    {
+        int[] studentCodes = null;
+        int [] studentGrades = null;
 
 
-    public static void readCSV(String file) {
-        System.out.println("Reading words, and numbers from CSV text file");
-
-        try {
-            Scanner sc = new Scanner(new File(file));
-            sc.useDelimiter("[,\r\n]+");
-            int[] codes = new int[8];
-            int[] grades = new int[8];
-
-
-            while(sc.hasNextLine())
-            {
-                String student_Number = sc.next();
-                for(int i = 0; i < 8;i++)
-                {
-                    codes[i] = sc.nextInt();
-                    grades[i] = sc.nextInt();
-                }
-                System.out.println("Student ID: " + student_Number);
-                System.out.println("CODES" + Arrays.toString(codes) + "\nGrades" + Arrays.toString(grades) );
-            }
-
-
-
-//            sc.close();
-
-        } catch (IOException e) {
-            System.out.println("Exception thrown. " + e);
-        }
+          //readCSV("JC_Results.csv");
+          selectFiveGrades(studentCodes, studentGrades);
+//        System.out.println(studentCodes);
+//        System.out.println(studentGrades);
     }
 
 
-//    public static void selectFiveGrades(int[] codes, int[] grades)
-//    {
-//        try(Scanner studentsFile = new Scanner(new BufferedReader(new FileReader("JC_Results.txt"))))
-//        {
-//            while(studentsFile.hasNextLine())
-//            {
-//                studentsFile.useDelimiter("[,\r\n]+");
-//                String input = studentsFile.nextLine();
-//                String[] data = input.split(",");
-//                int studentId = Integer.parseInt(data[0]);
-////                codes = new int[20];
-////                grades = new int[20];
-//
-//
-//
-//                //String student_Number = sc.next();
-//                for(int i = 0; i < 8;i++)
-//                {
-//                    codes[i] = studentsFile.nextInt();
-//                    grades[i] = studentsFile.nextInt();
-//                }
-//                System.out.println("CODES" + Arrays.toString(codes) + "\nGrades" + Arrays.toString(grades) );
-////
-////                for(int i = 1; i < data.length; i++)
-////                {
-////
-////                    if (i % 2 == 0)
-////                    {
-////                        //System.out.println(arr[i]);
-////
-////                        grades[i] = Integer.parseInt(data[i]);
-////                    }
-////                    if (i % 2 != 0)
-////                    {
-////                        //System.out.println(arr[i]);
-////                        //tempList1.add(Integer.parseInt(data[i]));
-////                        //System.out.println(codes[i]);
-////                        codes[i] = Integer.parseInt(data[i]);
-////                    }
-////                }
-//
-//
-//                //Student2 helpMe = new Student2(studentId, codes, grades);
-//
-//                //System.out.println(helpMe.toString());
-//                //System.out.println(input);
-//
-//            }
-//
-//            //Student2 helpMe = new Student2()
-//        }
-//
-//
-//
-//
-//        catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//
-//
-//
-//    }
+      public void selectFiveGrades(int[] codes, int[] grades)
+       {
+           System.out.println("Student Records\n");
+           String file = "JC_Results.csv";
+           codes = new int[8];
+           grades = new int[8];
+           int[] top5 = new int[5];
+           try {
+               Scanner sc = new Scanner(new File(file));
+               sc.useDelimiter("[,\r\n]+");
+
+               while(sc.hasNextLine())
+               {
+                   String student_Number = sc.next();
+                   for(int i = 0; i < 8;i++)
+                   {
+                       codes[i] = sc.nextInt();
+                       grades[i] = sc.nextInt();
+                       Arrays.sort(grades);
+                       top5 = Arrays.copyOfRange(grades, grades.length-5,grades.length);
+                   }
+
+                   System.out.println("Student ID: " + student_Number);
+                   System.out.println("CODES" + Arrays.toString(codes) + "\nGrades" + Arrays.toString(top5) + "\n");
+               }
+
+            sc.close();
+
+           } catch (IOException e) {
+               System.out.println("Exception thrown. " + e);
+           }
+
+
+       }
 
 
 
-
-
-
-
-//    private static String readFromFile(String fileName) throws IOException
-//    {
-//        FileReader file = new FileReader(new File("JC_Results.txt"));
-//        List<String> temp = new ArrayList<String>();
-//        BufferedReader reader = new BufferedReader(file);
-//        String content = "";
-//        String line;
-//
-//
-//        try {
-//            while ((line = reader.readLine()) != null) {
-//                if (line.length() > 0)
-//                {
-//                    content += line + "\n";
-//                } else
-//                    {
-//                    temp.add(content);
-//
-//                    content = "";
-//                }
-//            }
-//        }
-//        catch(FileNotFoundException fne)
-//        {
-//            System.out.println("Exception: Could not find file to read.");
-//        }
-//        temp.add(content);
-//        //file.close();
-//
-//
-//
-//        return content;
-//    }
-
-}
+    }
