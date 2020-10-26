@@ -15,7 +15,6 @@ public class CA1
     /**
      * Pass arrays through methods.
      * Get Top 5.
-     * Get Average.
      * Test.
      * Git.
      *
@@ -24,26 +23,21 @@ public class CA1
      */
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
              CA1 app = new CA1();
              app.start();
-//              readCSV("JC_Results.csv");
-//        int [] studentCodes;
-//        int [] studentGrades;
-//        selectFiveGrades(studentCodes, studentGrades);
-//
     }
 
     public void start()
     {
-        int[] studentCodes = null;
-        int [] studentGrades = null;
+        int[] studentCodes = new int[8];
+        int [] studentGrades = new int[8];
 
+        selectFiveGrades(studentCodes, studentGrades);
+        calculateAverage(studentGrades);
+        //System.out.println(calculateAverage(studentGrades));
 
-          //readCSV("JC_Results.csv");
-          selectFiveGrades(studentCodes, studentGrades);
-//        System.out.println(studentCodes);
-//        System.out.println(studentGrades);
     }
 
 
@@ -55,7 +49,6 @@ public class CA1
            grades = new int[8];
            int[] top5 = new int[5];
            int[] codes2 = new int[5];
-           int total = 0;
 
            try {
                Scanner sc = new Scanner(new File(file));
@@ -73,16 +66,8 @@ public class CA1
 //                       codes2 = Arrays.copyOfRange(codes, codes.length-5,codes.length);
                    }
 
-
-                   for(int a = 0; a < grades.length; a++)
-                   {
-                       total = total + grades[a];
-                   }
-
-                   double average = total / grades.length;
-
                    System.out.println("Student ID: " + student_Number);
-                   System.out.println("CODES" + Arrays.toString(codes) + "\nGrades" + Arrays.toString(grades) + "\n" + "Average Grade:" + average + "\n");
+                   System.out.println("CODES" + Arrays.toString(codes) + "\nGrades" + Arrays.toString(grades) + "\n");
 
                    //System.out.println("CODES" + Arrays.toString(codes2) + "\nGrades" + Arrays.toString(top5) + "\n");
 
@@ -98,6 +83,52 @@ public class CA1
        }
 
 
+
+    private void calculateAverage(int[] selectedGrades)
+    {
+        System.out.println("Student Records - The Averages\n");
+        String file = "JC_Results.csv";
+        int [] codes = new int[8];
+        selectedGrades = new int[8];
+
+        int total = 0;
+
+        try {
+            Scanner sc = new Scanner(new File(file));
+            sc.useDelimiter("[,\r\n]+");
+
+            while(sc.hasNextLine())
+            {
+                String student_Number = sc.next();
+                for(int i = 0; i < 8;i++)
+                {
+                    codes[i] = sc.nextInt();
+                    selectedGrades[i] = sc.nextInt();
+                }
+
+
+                for(int a = 0; a < selectedGrades.length; a++)
+                {
+                    total = total + selectedGrades[a];
+                }
+
+                double average = total / selectedGrades.length;
+
+                System.out.println("Student ID: " + student_Number);
+                System.out.println("Average Grade:" + average + "\n");
+
+                //System.out.println("CODES" + Arrays.toString(codes2) + "\nGrades" + Arrays.toString(top5) + "\n");
+
+            }
+
+            sc.close();
+
+        } catch (IOException e) {
+            System.out.println("Exception thrown. " + e);
+        }
+
+
+    }
 
 
     }
